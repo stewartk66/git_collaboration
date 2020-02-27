@@ -1,5 +1,6 @@
 # git collaboration
-## clone
+# GET NOTES FROM `chendaniely` REPOS
+## Clone a repository from github (non-SSH)
 ```
 
 stewa@LAPTOP-58OP9CKK MINGW64 ~
@@ -57,7 +58,7 @@ To https://github.com/stewartk66/git_collaboration.git
 stewa@LAPTOP-58OP9CKK MINGW64 /c/users/stewa/MyStuff/git/git_collaboration (master)
 $
 ```
-## history today
+## Command History #1
 ```
   141  git --version
   142  cd  cd /c/Users/stewa/MyStuff/git/
@@ -77,7 +78,7 @@ $
   156  history
 
 ```
-## create branch and switch/checkout
+## Create branch and switch/checkout commands
 ```
 stewa@LAPTOP-58OP9CKK MINGW64 /c/users/stewa/MyStuff/git/git_collaboration (master)
 $ git branch my_branch
@@ -113,7 +114,8 @@ $ git branch -a
 
 stewa@LAPTOP-58OP9CKK MINGW64 /c/users/stewa/MyStuff/git/git_collaboration (my_branch)
 ```
-## history 
+## Command History #2
+```
   158  git status
   159  git branch my_branch
   160  git branch -a
@@ -123,10 +125,10 @@ stewa@LAPTOP-58OP9CKK MINGW64 /c/users/stewa/MyStuff/git/git_collaboration (my_b
   164  git branch -a
   165  hostory
   166  history
-
-## checkout
-Use checkout to move HEAD  
-Was changed to restore and switch in recent version of git  
+```
+## Using `checkout`
+* Use checkout to move HEAD to a different branch or commit  
+* More recent versions of git have `restore` and `switch` commands instead of more complex `checkout` commands 
 
 ##
 ```
@@ -176,7 +178,8 @@ To https://github.com/stewartk66/git_collaboration.git
  * [new branch]      my_branch -> my_branch
 
 ```
-## SWitch and check readme.md file version
+## Switch branches and check readme.md file content
+Switch branches and checking content of the README.md file will show that the files are being updated as part of the switch 
 ```
 stewa@LAPTOP-58OP9CKK MINGW64 /c/users/stewa/MyStuff/git/git_collaboration (my_branch)
 $ cat README.md
@@ -203,7 +206,7 @@ stewa@LAPTOP-58OP9CKK MINGW64 /c/users/stewa/MyStuff/git/git_collaboration (mast
 $
 
 ```
-
+## Command History #3
 ```
   167  nano readme.md
   168  git status
@@ -216,7 +219,7 @@ $
   175  cat README.md
   176  history
 ```
-
+## Check current position
 ```
 stewa@LAPTOP-58OP9CKK MINGW64 /c/users/stewa/MyStuff/git/git_collaboration (master)
 $ git log --oneline --graph --decorate --all
@@ -227,7 +230,7 @@ $ git log --oneline --graph --decorate --all
 stewa@LAPTOP-58OP9CKK MINGW64 /c/users/stewa/MyStuff/git/git_collaboration (master)
 $
 ```
-
+## Basic process to add changes to remote repo
 ```
 stewa@LAPTOP-58OP9CKK MINGW64 /c/users/stewa/MyStuff/git/git_collaboration (master)
 $ git switch my_branch
@@ -278,17 +281,17 @@ stewa@LAPTOP-58OP9CKK MINGW64 /c/users/stewa/MyStuff/git/git_collaboration (my_b
 $
 
 ```
+## github `Pull Request` and `Issues`
+Use github to create a `pull request`. Similar to gitlab `Merge request`.
+Use github to add an `Issue` or `Project` which can then be associated with the `pull request`
 
-Use github to create a 'pull request'. 
-Add issues in github can be associated with the pull request 
-
-github has checks and actions to 'run' for example unit tests before allowing merge 
-
-
+github has `checks` and `actions` to 'run' for example unit tests before allowing merge 
 
 git pull = git fetch + git merge
 
-## branches left locally
+## Local Branchs left with no Remote
+After accepting  Pull Request the branch should be deleted in github. _However_, this will leave `local` with references to the deleted branch
+
 ```
 stewa@LAPTOP-58OP9CKK MINGW64 /c/users/stewa/MyStuff/git/git_collaboration (master)
 $ git branch -a
@@ -299,7 +302,7 @@ $ git branch -a
   remotes/origin/my_branch
 ```
 
-Although my_branch was deleetd in github
+Although my_branch was deleted in github
  it is still local so need to tidy up
 
  ```
@@ -341,7 +344,11 @@ $ git log --oneline --graph --all
 |/
 * 351e6cc first commit update to readme
 * d6f5672 Initial commit
+```
 
+## Use `--prune` to remove local ref to deleted remote branch
+
+```
 stewa@LAPTOP-58OP9CKK MINGW64 /c/users/stewa/MyStuff/git/git_collaboration (master)
 $ git fetch --prune --all
 Fetching origin
@@ -361,7 +368,10 @@ $ git branch -a
   my_branch
   remotes/origin/HEAD -> origin/master
   remotes/origin/master
-
+```
+ Reference to the origin/my_branch has gone but still has ref to my_branch.
+ ## Remove local branch
+```
 stewa@LAPTOP-58OP9CKK MINGW64 /c/users/stewa/MyStuff/git/git_collaboration (master)
 $ git branch -d my_branch
 Deleted branch my_branch (was 5b03a76).
@@ -391,8 +401,9 @@ nothing to commit, working tree clean
 
 ```
 
-## history
- 177  git log --oneline --graph --decorate --all
+## Command History #4
+```
+  177  git log --oneline --graph --decorate --all
   178  git switch my_branch
   179  nano README.md
   180  git status
@@ -413,7 +424,9 @@ nothing to commit, working tree clean
   195  git status
   196  history
 
-## Second branch + delete
+```
+
+## Exercise to create a second branch, work with it & delete it
 ```
 stewa@LAPTOP-58OP9CKK MINGW64 /c/users/stewa/MyStuff/git/git_collaboration (master)
 $ git branch my_second_branch
@@ -448,7 +461,9 @@ remote:      https://github.com/stewartk66/git_collaboration/pull/new/my_second_
 remote:
 To https://github.com/stewartk66/git_collaboration.git
  * [new branch]      my_second_branch -> my_second_branch
-
+```
+Should have switched to master at this point but didn't 
+```
 stewa@LAPTOP-58OP9CKK MINGW64 /c/users/stewa/MyStuff/git/git_collaboration (my_second_branch)
 $ git pull origin master
 remote: Enumerating objects: 1, done.
@@ -499,7 +514,11 @@ $ git branch -a
   remotes/origin/HEAD -> origin/master
   remotes/origin/master
   remotes/origin/my_second_branch
+```
+... now to do it properly, start by switching to master
 
+### Update master
+```
 stewa@LAPTOP-58OP9CKK MINGW64 /c/users/stewa/MyStuff/git/git_collaboration (my_second_branch)
 $ git switch master
 Switched to branch 'master'
@@ -536,7 +555,10 @@ $ git log --oneline --graph --all
 |/
 * 351e6cc first commit update to readme
 * d6f5672 Initial commit
-
+```
+### Prune master 
+Hadn't removed remote branch at this point so didn't 'prune' local 
+```
 stewa@LAPTOP-58OP9CKK MINGW64 /c/users/stewa/MyStuff/git/git_collaboration (master)
 $ git fetch --prune --all
 Fetching origin
@@ -593,7 +615,9 @@ $ git log --oneline --graph --all
 |/
 * 351e6cc first commit update to readme
 * d6f5672 Initial commit
-
+```
+Deleted local branch at this point but hadn't deleted the remote so remote still being referred to  
+```
 stewa@LAPTOP-58OP9CKK MINGW64 /c/users/stewa/MyStuff/git/git_collaboration (master)
 $ git fetch --prune --all
 Fetching origin
@@ -612,7 +636,9 @@ $ git branch -a
 * master
   remotes/origin/HEAD -> origin/master
   remotes/origin/master
-
+```
+Reference to remote has now been removed
+```
 stewa@LAPTOP-58OP9CKK MINGW64 /c/users/stewa/MyStuff/git/git_collaboration (master)
 $ git log --oneline --graph --all
 *   ac2651f (HEAD -> master, origin/master, origin/HEAD) Merge pull request #2 from stewartk66/my_second_branch
@@ -643,12 +669,9 @@ nothing to commit, working tree clean
 stewa@LAPTOP-58OP9CKK MINGW64 /c/users/stewa/MyStuff/git/git_collaboration (master)
 $
 ```
-
-the git fetch ... --prune tidies up local refs to deleted branches
-## Issue
-Forgot to switch to master so had a couple of go's to tidy up
-
-## history
+The branches are now reported as expected  
+The git fetch ... `--prune` tidies up local refs to deleted branches
+## Command History #5
 ```
   197  git branch my_second_branch
   198  git switch my_second_branch
@@ -681,8 +704,6 @@ Forgot to switch to master so had a couple of go's to tidy up
   225  git status
   226  history
 ```
-
-# get notes from chendaniely
 
 ## reset / restore
 ```
